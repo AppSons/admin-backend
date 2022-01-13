@@ -14,19 +14,20 @@ const app = express();
 
 app.use(cors());
 
+//Lectura y Parseo del body
+
+app.use(express.json());
+
 //Conexión a BBDD
 
 dbConnection();
 
 
 //Rutas
-app.get( '/', (req, res)=>{
 
-    res.json({
-        ok: true,
-        msg: 'Hola que Tal?'
-    });
-});
+app.use('/api/usuarios', require('./routes/usuarios-routes'));
+app.use('/api/login', require('./routes/auth-routes'));
+
 
 
 app.listen(process.env.PORT, () => {
