@@ -22,6 +22,10 @@ app.use(express.json());
 
 dbConnection();
 
+//Directorio público
+
+app.use(express.static('public'));
+
 
 //Rutas
 
